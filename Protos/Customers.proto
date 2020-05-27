@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+
+
+service Customer {
+
+  rpc IsProductAddressUpdateAllowed (IsProductAddressUpdateAllowedRequest) returns (IsProductAddressUpdateAllowedResponse);
+}
+
+
+message IsProductAddressUpdateAllowedRequest {
+  string state_From = 1;
+  string state_To = 2;
+  int32 userrelationid = 3;
+}
+
+
+message IsProductAddressUpdateAllowedResponse {
+  reserved 1;
+  reserved "IsAddressUpdatable";
+  // bool IsAddressUpdatable = 1;
+  string ReturnMessage = 2;
+  google.protobuf.BoolValue AddressUpdatable = 3;
+}
